@@ -11,19 +11,15 @@ def command():
         text = r.recognize_google(audio).lower()
         print("You said: " + text)
     except sr.UnknownValueError:
-        print("не распознано")
-        text = command()
-    except sr.AttributeError:
         print("not recognized")
         text = command()
     except sr.TimeoutError:
         print("The attempt to establish a connection was unsuccessful.")
     return text
 def makeSomething(command):
-    tarjimon = Translator() # Translator bu maxsus klass (tarjimon esa obyekt)
+    tarjimon = Translator()
     tarjima = tarjimon.translate(str(command), dest='ru')
     print(f"Translate: {tarjima.text}")
  
 while True:
     makeSomething(command())
-    
